@@ -10,7 +10,7 @@ function App() {
         {
             id: new Date().toString(),
             title: 'Meetings',
-            text: 'Schedule meeting with UI/UX team',
+            text: ' Schedule meeting with UI/UX Team',
             color: '#dfdfdf',
             date: new Date().toString(),
         },
@@ -22,7 +22,7 @@ function App() {
             <Container className='mt-5'>
                 <Row>
                     <Col>
-                        <NotesList />
+                        <NotesList notes={notes} />
                     </Col>
                 </Row>
             </Container>
