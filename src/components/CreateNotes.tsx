@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Alert, Button, Form } from 'react-bootstrap';
 import { Note } from '../models/note.model';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -39,6 +39,7 @@ const CreateNotes: React.FC<ICreateNotesProps> = ({ notes, setNotes }) => {
     return (
         <>
             <h2>Create Notes</h2>
+
             <Form className='mt-3 mb-3' onSubmit={(e) => handleSubmit(e)}>
                 <Form.Group className='mb-3' controlId='formBasic'>
                     <Form.Label>Title</Form.Label>
@@ -65,7 +66,9 @@ const CreateNotes: React.FC<ICreateNotesProps> = ({ notes, setNotes }) => {
                         defaultValue='#dfdfdf'
                         title='Choose your color'
                         ref={colorRef}
+                        className='mb-3'
                     />
+                    {error && <Alert variant='danger'>{error}</Alert>}
                     <Button type='submit' variant='primary' className='mt-3'>
                         Submit
                     </Button>
