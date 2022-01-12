@@ -1,17 +1,26 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
 interface ICreateNotesProps {}
 
 const CreateNotes: React.FC<ICreateNotesProps> = (props) => {
+    const [error, setError] = useState<string>('');
+
     const titleRef = useRef<HTMLInputElement | null>(null);
     const textRef = useRef<HTMLTextAreaElement | null>(null);
     const colorRef = useRef<HTMLInputElement | null>(null);
 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        if (titleRef.current?.value === '' || textRef.current?.value === '') {
+            return setError('All Fields Are Mandatory!');
+        }
+    };
+
     return (
         <>
             <h2>Create Notes</h2>
-            <Form className='mt-3 mb-3'>
+            <Form className='mt-3 mb-3' onSubmit={(e) => handleSubmit(e)}>
                 <Form.Group className='mb-3' controlId='formBasic'>
                     <Form.Label>Title</Form.Label>
                     <Form.Control
