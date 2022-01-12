@@ -31,6 +31,9 @@ const CreateNotes: React.FC<ICreateNotesProps> = ({ notes, setNotes }) => {
                 date: new Date().toString(),
             },
         ]);
+        (titleRef.current as HTMLInputElement).value = '';
+        (textRef.current as HTMLTextAreaElement).value = '';
+        (colorRef.current as HTMLInputElement).value = '#dfdfdf';
     };
 
     return (
