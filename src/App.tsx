@@ -5,6 +5,7 @@ import Header from './components/Header';
 import NotesList from './components/NotesList';
 import { Note } from './models/note.model';
 import { v4 as uuidv4 } from 'uuid';
+import CreateNotes from './components/CreateNotes';
 
 function App() {
     const [notes, setNotes] = useState<Note[]>([
@@ -24,6 +25,11 @@ function App() {
                 <Row>
                     <Col>
                         <NotesList notes={notes} setNotes={setNotes} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <CreateNotes notes={notes} setNotes={setNotes} />
                     </Col>
                 </Row>
             </Container>
