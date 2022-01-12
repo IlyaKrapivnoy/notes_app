@@ -4,11 +4,13 @@ import Notes from './Notes';
 
 interface INotesListProps {
     notes: Note[];
+    setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
 }
 
-const NotesList: React.FC<INotesListProps> = ({ notes }) => {
+const NotesList: React.FC<INotesListProps> = ({ notes, setNotes }) => {
     const handleDelete = (id: string) => {
-        console.log(id);
+        const filteredNote = notes.filter((note) => note.id !== id);
+        setNotes(filteredNote);
     };
 
     const renderNotes = (): JSX.Element[] => {
