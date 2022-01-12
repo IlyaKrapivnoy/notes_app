@@ -7,7 +7,9 @@ interface INotesListProps {
 }
 
 const NotesList: React.FC<INotesListProps> = ({ notes }) => {
-    const handleDelete = (id: string) => {};
+    const handleDelete = (id: string) => {
+        console.log(id);
+    };
 
     const renderNotes = (): JSX.Element[] => {
         return notes.map((note) => {

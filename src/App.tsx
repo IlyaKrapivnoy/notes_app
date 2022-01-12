@@ -4,11 +4,12 @@ import './App.css';
 import Header from './components/Header';
 import NotesList from './components/NotesList';
 import { Note } from './models/note.model';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
     const [notes, setNotes] = useState<Note[]>([
         {
-            id: new Date().toString(),
+            id: uuidv4(),
             title: 'Meetings',
             text: ' Schedule meeting with UI/UX Team',
             color: '#dfdfdf',
