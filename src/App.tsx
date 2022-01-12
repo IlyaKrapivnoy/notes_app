@@ -12,7 +12,7 @@ function App() {
         {
             id: uuidv4(),
             title: 'Meetings',
-            text: ' Schedule meeting with UI/UX Team',
+            text: 'Schedule meeting with UI/UX Team',
             color: '#dfdfdf',
             date: new Date().toString(),
         },

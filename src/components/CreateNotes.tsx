@@ -1,9 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { Note } from '../models/note.model';
+import { v4 as uuidv4 } from 'uuid';
 
-interface ICreateNotesProps {}
+interface ICreateNotesProps {
+    notes: Note[];
+    setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
+}
 
-const CreateNotes: React.FC<ICreateNotesProps> = (props) => {
+const CreateNotes: React.FC<ICreateNotesProps> = ({ notes, setNotes }) => {
     const [error, setError] = useState<string>('');
 
     const titleRef = useRef<HTMLInputElement | null>(null);
@@ -15,6 +20,17 @@ const CreateNotes: React.FC<ICreateNotesProps> = (props) => {
         if (titleRef.current?.value === '' || textRef.current?.value === '') {
             return setError('All Fields Are Mandatory!');
         }
+        setError('');
+        setNotes([
+            ...notes,
+            {
+                id: uuidv4(),
+                title: (titleRef.current as HTMLInputElement).value,
+                text: (textRef.current as HTMLTextAreaElement).value,
+                color: (colorRef.current as HTMLInputElement).value,
+                date: new Date().toString(),
+            },
+        ]);
     };
 
     return (
@@ -47,7 +63,7 @@ const CreateNotes: React.FC<ICreateNotesProps> = (props) => {
                         title='Choose your color'
                         ref={colorRef}
                     />
-                    <Button type='submit' variant='primary'>
+                    <Button type='submit' variant='primary' className='mt-3'>
                         Submit
                     </Button>
                 </Form.Group>
