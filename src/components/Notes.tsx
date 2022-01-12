@@ -4,9 +4,10 @@ import { Note } from '../models/note.model';
 
 interface INotesProps {
     note: Note;
+    handleDelete: (id: string) => void;
 }
 
-const Notes: React.FC<INotesProps> = ({ note }) => {
+const Notes: React.FC<INotesProps> = ({ note, handleDelete }) => {
     return (
         <div className='mb-3'>
             <Card style={{ background: note.color }}>
@@ -16,7 +17,11 @@ const Notes: React.FC<INotesProps> = ({ note }) => {
                     <Card.Subtitle className='text-muted'>
                         {note.date}
                     </Card.Subtitle>
-                    <Button variant='secondary' className='mt-3'>
+                    <Button
+                        variant='secondary'
+                        className='mt-3'
+                        onClick={() => handleDelete(note.id)}
+                    >
                         DELETE
                     </Button>
                 </Card.Body>
