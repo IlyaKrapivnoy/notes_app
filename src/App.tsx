@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import './App.css';
+import Header from './components/Header';
 import { Note } from './models/note.model';
 
 function App() {
@@ -13,7 +15,17 @@ function App() {
         },
     ]);
 
-    return <div className='App'>test</div>;
+    return (
+        <>
+            <Container>
+                <Row>
+                    <Col>
+                        <Header />
+                    </Col>
+                </Row>
+            </Container>
+        </>
+    );
 }
 
 export default App;
